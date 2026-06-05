@@ -615,18 +615,26 @@ namespace LiveSplit.UI.Components
         {
             if (CounterList.Count() != state.Run.ToList().Count())
                 return;
+        
             for (int i = 0; i < CounterList.Count(); i++)
             {
-                string SplitName = state.Run[i].Name;
-                if (SplitName.Length > 0)
+                string splitName = state.Run[i].Name;
+        
+                if (splitName.Length == 0)
+                    continue;
+        
+                int currentPB = GetPBCounter(i);
+                int liveCount = CounterList[i];
+        
+                int lineindex = splitName.IndexOf('|') + 1;
+        
+                if (lineindex != 0 && lineindex < splitName.Length)
+                    splitName = splitName.Substring(lineindex);
+        
+                // Save if there is no PB yet, or if the new value is lower
+                if (currentPB == 0 || liveCount < currentPB)
                 {
-                    int lineindex = SplitName.IndexOf('|') + 1;
-                    if (lineindex != 0 && lineindex < SplitName.Length)
-                    {
-                        SplitName = SplitName.Substring(lineindex);
-                    }
-                    SplitName = CounterList[i].ToString() + "|" + SplitName;
-                    state.Run[i].Name = SplitName;
+                    state.Run[i].Name = liveCount.ToString() + "|" + splitName;
                 }
             }
         }
