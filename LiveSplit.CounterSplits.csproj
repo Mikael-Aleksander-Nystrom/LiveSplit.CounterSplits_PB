@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>LiveSplit.CounterSplits</RootNamespace>
     <AssemblyName>LiveSplit.CounterSplits</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
@@ -31,6 +31,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies.net481" Version="1.0.3" PrivateAssets="All" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="LiveSplit.Core">
+      <HintPath>..\..\Livesplit\LiveSplit.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="UpdateManager">
+      <HintPath>..\..\Livesplit\UpdateManager.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -65,16 +74,6 @@
       <DependentUpon>SplitsSettings.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\ExtendedGradientType.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\LiveSplit.Core\LiveSplit.Core.csproj">
-      <Project>{6de847db-20a3-4848-aeee-1b4364aecdfb}</Project>
-      <Name>LiveSplit.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\UpdateManager\UpdateManager.csproj">
-      <Project>{56dea3a0-2eb7-493b-b50f-a5e3aa8ae52a}</Project>
-      <Name>UpdateManager</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

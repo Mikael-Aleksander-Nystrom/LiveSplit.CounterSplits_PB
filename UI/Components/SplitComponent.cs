@@ -632,7 +632,8 @@ namespace LiveSplit.UI.Components
                     splitName = splitName.Substring(lineindex);
         
                 // Save if there is no PB yet, or if the new value is lower
-                if (currentPB == 0 || liveCount < currentPB)
+                if (i < state.CurrentSplitIndex &&
+                    (currentPB == 0 || liveCount < currentPB))
                 {
                     state.Run[i].Name = liveCount.ToString() + "|" + splitName;
                 }
