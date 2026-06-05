@@ -104,6 +104,8 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
+            this.label14 = new System.Windows.Forms.Label();
+            this.txtResetPB = new System.Windows.Forms.TextBox();
             this.txtIncrement = new System.Windows.Forms.TextBox();
             this.lblCounterIncrement = new System.Windows.Forms.Label();
             this.lblCounterDecrement = new System.Windows.Forms.Label();
@@ -1171,8 +1173,10 @@
             this.tableLayoutPanel11.ColumnCount = 2;
             this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.66842F));
             this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 68.33158F));
-            this.tableLayoutPanel11.Controls.Add(this.label12, 0, 3);
-            this.tableLayoutPanel11.Controls.Add(this.txtSave, 0, 3);
+            this.tableLayoutPanel11.Controls.Add(this.label12, 0, 4);
+            this.tableLayoutPanel11.Controls.Add(this.txtSave, 1, 4);
+            this.tableLayoutPanel11.Controls.Add(this.label14, 0, 3);
+            this.tableLayoutPanel11.Controls.Add(this.txtResetPB, 1, 3);
             this.tableLayoutPanel11.Controls.Add(this.txtIncrement, 1, 0);
             this.tableLayoutPanel11.Controls.Add(this.lblCounterIncrement, 0, 0);
             this.tableLayoutPanel11.Controls.Add(this.lblCounterDecrement, 0, 1);
@@ -1182,12 +1186,13 @@
             this.tableLayoutPanel11.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel11.Location = new System.Drawing.Point(3, 16);
             this.tableLayoutPanel11.Name = "tableLayoutPanel11";
-            this.tableLayoutPanel11.RowCount = 4;
+            this.tableLayoutPanel11.RowCount = 5;
             this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel11.Size = new System.Drawing.Size(430, 99);
+            this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel11.Size = new System.Drawing.Size(430, 124);
             this.tableLayoutPanel11.TabIndex = 1;
             // 
             // txtIncrement
@@ -1253,14 +1258,35 @@
             this.txtReset.Enter += new System.EventHandler(this.txtReset_Enter);
             this.txtReset.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtReset_KeyDown);
             // 
+            // txtResetPB
+            // 
+            this.txtResetPB.BackColor = System.Drawing.SystemColors.Menu;
+            this.txtResetPB.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtResetPB.Location = new System.Drawing.Point(139, 78);
+            this.txtResetPB.Name = "txtResetPB";
+            this.txtResetPB.Size = new System.Drawing.Size(288, 20);
+            this.txtResetPB.TabIndex = 6;
+            this.txtResetPB.Enter += new System.EventHandler(this.txtResetPB_Enter);
+            this.txtResetPB.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtResetPB_KeyDown);
+            // 
+            // label14
+            // 
+            this.label14.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(3, 81);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(61, 13);
+            this.label14.TabIndex = 7;
+            this.label14.Text = "Reset PB:";
+            // 
             // txtSave
             // 
             this.txtSave.BackColor = System.Drawing.SystemColors.Menu;
             this.txtSave.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtSave.Location = new System.Drawing.Point(139, 78);
+            this.txtSave.Location = new System.Drawing.Point(139, 103);
             this.txtSave.Name = "txtSave";
             this.txtSave.Size = new System.Drawing.Size(288, 20);
-            this.txtSave.TabIndex = 6;
+            this.txtSave.TabIndex = 8;
             this.txtSave.Enter += new System.EventHandler(this.txtSave_Enter);
             this.txtSave.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSave_KeyDown);
 
@@ -1269,10 +1295,10 @@
             // 
             this.label12.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(3, 81);
+            this.label12.Location = new System.Drawing.Point(3, 106);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(75, 13);
-            this.label12.TabIndex = 7;
+            this.label12.TabIndex = 9;
             this.label12.Text = "Save Counter:";
             // 
             // SplitsSettings
@@ -1409,6 +1435,8 @@
         private System.Windows.Forms.Label lblCounterReset;
         private System.Windows.Forms.TextBox txtDecrement;
         private System.Windows.Forms.TextBox txtReset;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox txtResetPB;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox txtSave;
     }

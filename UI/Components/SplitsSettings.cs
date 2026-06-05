@@ -92,6 +92,7 @@ namespace LiveSplit.UI.Components
         public KeyOrButton DecrementKey { get; set; }
         public KeyOrButton ResetKey { get; set; }
         public KeyOrButton SaveKey { get; set; }
+        public KeyOrButton ResetPBKey { get; set; }
 
 
         public SplitsSettings(LiveSplitState state)
@@ -108,6 +109,7 @@ namespace LiveSplit.UI.Components
             DecrementKey = new KeyOrButton(Keys.Subtract);
             ResetKey = new KeyOrButton(Keys.Multiply);
             SaveKey = new KeyOrButton(Keys.Z);
+            ResetPBKey = new KeyOrButton(Keys.Divide);
 
             VisualSplitCount = 8;
             SplitPreviewCount = 1;
@@ -439,12 +441,14 @@ namespace LiveSplit.UI.Components
             ResetKey = string.IsNullOrEmpty(resetElement.InnerText) ? null : new KeyOrButton(resetElement.InnerText);
             XmlElement saveElement = element["SaveKey"];
             SaveKey = string.IsNullOrEmpty(saveElement.InnerText) ? null : new KeyOrButton(saveElement.InnerText);
-
+            XmlElement resetPBElement = element["ResetPBKey"];
+            ResetPBKey = string.IsNullOrEmpty(resetPBElement.InnerText) ? null : new KeyOrButton(resetPBElement.InnerText);
 
             txtIncrement.Text = FormatKey(IncrementKey);
             txtDecrement.Text = FormatKey(DecrementKey);
             txtReset.Text = FormatKey(ResetKey);
             txtSave.Text = FormatKey(SaveKey);
+            txtResetPB.Text = FormatKey(ResetPBKey);
 
             RegisterHotKeys();
         }
@@ -502,7 +506,8 @@ namespace LiveSplit.UI.Components
             SettingsHelper.CreateSetting(document, parent, "IncrementKey", IncrementKey) ^
             SettingsHelper.CreateSetting(document, parent, "DecrementKey", DecrementKey) ^
             SettingsHelper.CreateSetting(document, parent, "ResetKey", ResetKey) ^
-            SettingsHelper.CreateSetting(document, parent, "SaveKey", SaveKey);
+            SettingsHelper.CreateSetting(document, parent, "SaveKey", SaveKey) ^
+            SettingsHelper.CreateSetting(document, parent, "ResetPBKey", ResetPBKey);
 
             XmlElement columnsElement = null;
             if (document != null)
@@ -731,6 +736,7 @@ namespace LiveSplit.UI.Components
                 Hook.RegisterHotKey(DecrementKey);
                 Hook.RegisterHotKey(ResetKey);
                 Hook.RegisterHotKey(SaveKey);
+                Hook.RegisterHotKey(ResetPBKey);
             }
             catch (Exception ex)
             {  }
@@ -795,6 +801,16 @@ namespace LiveSplit.UI.Components
         }
 
         private void txtSave_KeyDown(object sender, KeyEventArgs e)
+        {
+            e.SuppressKeyPress = true;
+        }
+
+        private void txtResetPB_Enter(object sender, EventArgs e)
+        {
+            SetHotkeyHandlers((TextBox)sender, x => ResetPBKey = x);
+        }
+
+        private void txtResetPB_KeyDown(object sender, KeyEventArgs e)
         {
             e.SuppressKeyPress = true;
         }

@@ -107,6 +107,8 @@ namespace LiveSplit.UI.Components
                     RebuildCounter(State);
                 if (e == Settings.SaveKey)
                     AddLiveToPB(State);
+                if (e == Settings.ResetPBKey)
+                    ResetPB(State);
             }
         }
 
@@ -609,6 +611,18 @@ namespace LiveSplit.UI.Components
             CounterList.Clear();
             for (int i = 0; i < state.Run.ToList().Count(); i++)
                 CounterList.Add(0);
+        }
+
+        public void ResetPB(LiveSplitState state)
+        {
+            for (int i = 0; i < state.Run.Count; i++)
+            {
+                var splitName = state.Run[i].Name;
+                var lineIndex = splitName.IndexOf('|');
+
+                if (lineIndex >= 0 && lineIndex < splitName.Length - 1)
+                    state.Run[i].Name = splitName.Substring(lineIndex + 1);
+            }
         }
 
         public void AddLiveToPB(LiveSplitState state)
